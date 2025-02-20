@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dock Interface</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Left-top dock - Widget shortcuts -->
+    <nav class="dock dock-left-top">
+        <div class="app-container">
+            <a href="#" class="app-link" data-app-type="widget" data-widget-id="notes">
+                <div class="app-wrapper">
+                    <svg class="app-icon" viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-3-3H8v-2h8v2zm0-4H8v-2h8v2zm0-4H8V6h8v2z"/>
+                    </svg>
+                    <span class="app-name">Notes</span>
+                </div>
+            </a>
+            <a href="#" class="app-link" data-app-type="widget" data-widget-id="pomodoro">
+                <div class="app-wrapper">
+                    <svg class="app-icon" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+                        <path d="M12 5v7l4.28 2.54.72-1.21-3.5-2.08V5H12z"/>
+                    </svg>
+                    <span class="app-name">Pomodoro</span>
+                </div>
+            </a>
+            <a href="#" class="app-link" data-app-type="widget" data-widget-id="todo">
+                <div class="app-wrapper">
+                    <svg class="app-icon" viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM18 7H6v2h12V7zm-4 4H6v2h8v-2zm-8 4h8v2H6v-2z"/>
+                    </svg>
+                    <span class="app-name">Todo</span>
+                </div>
+            </a>
+            <a href="#" class="app-link" data-app-type="widget" data-widget-id="apps">
+                <div class="app-wrapper">
+                    <svg class="app-icon" viewBox="0 0 24 24">
+                        <path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/>
+                    </svg>
+                    <span class="app-name">Apps</span>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Top-left dock - Quick access links -->
+    <nav class="dock dock-top-left">
+        <div class="app-container">
+            <a href="/" class="app-link" data-app-type="home">
+                <div class="app-wrapper">
+                    <svg class="app-icon" viewBox="0 0 24 24">
+                        <path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/>
+                    </svg>
+                    <span class="app-name">Home</span>
+                </div>
+            </a>
+            <!-- Add Menu Container -->
+            <div class="menu-container" id="home-menu">
+                <div class="menu-wrapper">
+                    <div class="menu-header">Quick Links</div>
+                    <div class="menu-content">
+                        <a href="http://192.168.0.15:7575/board/default" class="menu-item" target="_blank">Homarr</a>
+                        <a href="http://192.168.0.7/#/" class="menu-item" target="_blank">Pi Casa</a>
+                        <a href="https://chat.openai.com" class="menu-item" target="_blank">ChatGPT</a>
+                    </div>
+                </div>
+            </div>
+            <a href="https://notion.so" class="app-link" data-app-type="external" target="_blank">
+                <div class="app-wrapper">
+                    <svg class="app-icon" viewBox="0 0 24 24">
+                        <path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm3 3h6v2H9V9zm0 4h6v2H9v-2z"/>
+                    </svg>
+                    <span class="app-name">Notion</span>
+                </div>
+            </a>
+            <!-- Remove hover menus from all other external links - they follow the same pattern -->
+            <a href="https://login.tailscale.com/admin/machines" class="app-link" data-app-type="external" target="_blank">
+                <div class="app-wrapper">
+                    <svg class="app-icon" viewBox="0 0 24 24">
+                        <path d="M7 7h2v2H7V7zm4 0h2v2h-2V7zm4 0h2v2h-2V7zm-8 4h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zm-8 4h2v2H7v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z"/>
+                    </svg>
+                    <span class="app-name">Tailscale</span>
+                </div>
+            </a>
+            <a href="https://192.168.0.15:9443/#!/home" class="app-link" data-app-type="external" target="_blank">
+                <div class="app-wrapper">
+                    <svg class="app-icon" viewBox="0 0 24 24">
+                        <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.186.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.186.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.186.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.185-.186H5.136a.186.186 0 00-.186.185v1.888c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288z"/>
+                    </svg>
+                    <span class="app-name">Portainer</span>
+                </div>
+            </a>
+            <a href="https://app.plex.tv/desktop/?_gl=1*130yaf5*_gcl_au*MTgxNDEyMjE3NS4xNzI5ODMwNjc2*_ga*NzY1MDQ3MTQ0LjE3Mjk4MzA2NzY.*_ga_G6FQWNSENB*MTczMzk2Nzk2NS4xMy4wLjE3MzM5Njc5NjUuNjAuMC4w#!" class="app-link" data-app-type="external" target="_blank">
+                <div class="app-wrapper">
+                    <svg class="app-icon" viewBox="0 0 24 24">
+                        <path d="M20.0312 8.53125L16.2188 12L20.0312 15.4688L12 20.0312L3.96875 15.4688L7.78125 12L3.96875 8.53125L12 3.96875L20.0312 8.53125Z"/>
+                    </svg>
+                    <span class="app-name">Plex</span>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Top-right dock - System controls -->
+    <nav class="dock dock-top-right">
+        <div class="app-container">
+            <a href="#" class="app-link" data-app-type="system" id="settings-toggle">
+                <div class="app-wrapper">
+                    <svg class="app-icon" viewBox="0 0 24 24">
+                        <path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5zm0-2A1.5 1.5 0 0 0 13.5 12 1.5 1.5 0 0 0 12 10.5 1.5 1.5 0 0 0 10.5 12 1.5 1.5 0 0 0 12 13.5m7.43-2.53c.04-.32.07-.64.07-.97 0-.33-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65z"/>
+                    </svg>
+                    <span class="app-name">Settings</span>
+                </div>
+            </a>
+            <div class="menu-container settings-menu" id="settings-menu">
+                <div class="menu-wrapper">
+                    <div class="menu-header">Settings</div>
+                    <div class="menu-content">
+                        <div class="menu-item theme-toggle">
+                            <span>Theme</span>
+                            <button class="theme-button">Dark</button>
+                        </div>
+                        <div class="menu-divider"></div>
+                        <div class="menu-section">
+                            <div class="menu-section-header">Add App</div>
+                            <div class="app-form">
+                                <input type="text" id="new-app-name" placeholder="App Name">
+                                <input type="text" id="new-app-url" placeholder="URL (e.g., https://...)">
+                                <input type="text" id="new-app-icon" placeholder="Icon URL (optional)">
+                                <button class="add-app-button">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Removed power button -->
+        </div>
+    </nav>
+
+    <!-- Left-bottom dock - Media controls -->
+    <nav class="dock dock-left-bottom">
+        <div class="app-container">
+            <a href="#" class="app-link" data-app-type="widget" data-widget-id="music">
+                <div class="app-wrapper">
+                    <svg class="app-icon" viewBox="0 0 24 24">
+                        <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                    </svg>
+                    <span class="app-name">Music</span>
+                </div>
+            </a>
+            <a href="#" class="app-link" data-app-type="widget" data-widget-id="screen">
+                <div class="app-wrapper">
+                    <svg class="app-icon" viewBox="0 0 24 24">
+                        <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+                    </svg>
+                    <span class="app-name">Background</span>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Widget display container -->
+    <div id="widget-container"></div>
+    
+    <!-- Floating buttons -->
+    <div class="float-buttons">
+        <a href="#" class="app-link float-button" id="dock-toggle">
+            <div class="app-wrapper">
+                <svg class="app-icon" viewBox="0 0 24 24">
+                    <path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm0 2v14h14V5H5zm2 2h10v2H7V7zm0 4h10v2H7v-2z"/>
+                </svg>
+            </div>
+        </a>
+        <a href="#" class="app-link float-button" id="fullscreen-toggle">
+            <div class="app-wrapper">
+                <svg class="app-icon" viewBox="0 0 24 24">
+                    <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+                </svg>
+            </div>
+        </a>
+    </div>
+
+    <!-- JavaScript functionality -->
+    <script src="script.js"></script>
+</body>
+</html>

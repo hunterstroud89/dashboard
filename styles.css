@@ -1,0 +1,1075 @@
+/* Theme Variables */
+:root {
+    /* Dark Theme (Default) */
+    --bg-primary: rgba(28, 39, 49, 0.95);
+    --bg-secondary: rgba(28, 39, 49, 0.98);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-primary: rgba(255, 255, 255, 0.9);
+    --text-secondary: rgba(255, 255, 255, 0.7);
+}
+
+/* Light Theme */
+[data-theme="light"] {
+    --bg-primary: rgba(255, 223, 230, 0.95);    /* Soft pink */
+    --bg-secondary: rgba(255, 223, 230, 0.98);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --text-primary: rgba(51, 51, 51, 0.9);
+    --text-secondary: rgba(51, 51, 51, 0.7);
+}
+
+/* Main body styling with background image */
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: url('https://i.redd.it/5mqp7trvxov51.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Main dock container with glass morphism effect */
+.dock {
+    position: fixed;
+    padding: 6px;  /* Increased from 5px */
+    background: var(--bg-primary);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Top dock positioning and dimensions */
+.dock-top-left {
+    top: 10px;    /* Changed from 20px */
+    left: 10px;   /* Changed from 20px */
+    width: fit-content;
+    height: 38px;  /* Reduced from 54px */
+    max-width: calc(100vw - 40px);
+}
+
+/* Top-right dock positioning and dimensions */
+.dock-top-right {
+    top: 10px;    /* Changed from 20px */
+    right: 10px;  /* Changed from 20px */
+    width: fit-content;
+    height: 38px;  /* Reduced from 54px */
+    max-width: calc(100vw - 40px);
+}
+
+/* Left dock positioning and dimensions */
+.dock-left-top {
+    top: 70px;    /* Changed from 60px to match 10px spacing (38px height + 12px padding + 10px gap = 70px) */
+    left: 10px;
+    width: 54px;
+    height: fit-content;
+    max-height: calc(100vh - 120px);
+}
+
+/* Left-bottom dock positioning and dimensions */
+.dock-left-bottom {
+    bottom: 10px; /* Changed from 20px */
+    left: 10px;   /* Changed from 20px */
+    width: 54px;
+    height: fit-content;
+    max-height: calc(100vh - 120px);
+}
+
+/* Flexible container for app icons */
+.app-container {
+    display: flex;
+    gap: 12px;  /* Reduced from 16px to maintain proportion */
+    padding: 6px;  /* Reduced from 8px */
+    padding-right: 12px;  /* Reduced from 16px */
+}
+
+/* Horizontal layout for top dock apps */
+.dock-top-left .app-container,
+.dock-top-right .app-container {
+    flex-direction: row;
+    align-items: center;
+    padding-left: 12px;  /* Reduced from 16px */
+    padding: 6px 12px;
+    gap: 16px;  /* Increased gap between items */
+}
+
+/* Horizontal layout for top docks */
+.dock-top-right .app-container {
+    flex-direction: row;
+    align-items: center;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+/* Vertical layout for left dock apps */
+.dock-left-top .app-container {
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Vertical layout for left dock apps */
+.dock-left-bottom .app-container {
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Basic app link styling with hover animation */
+.app-link {
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    position: relative;
+    padding-bottom: 8px; /* Add this line to create space for the menu */
+}
+
+/* Drag and Drop Styles */
+.app-link[draggable="true"] {
+    cursor: move;
+}
+
+.app-link.dragging {
+    opacity: 0.5;
+}
+
+.app-container.drag-over {
+    background: var(--border-color);
+    border-radius: 8px;
+}
+
+/* Container for icon and label alignment */
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;  /* Reduced from 5px */
+}
+
+/* Adjust app wrapper for top docks */
+.dock-top-left .app-wrapper,
+.dock-top-right .app-wrapper {
+    flex-direction: row;
+    gap: 8px;
+}
+
+/* Keep vertical layout for left docks */
+.dock-left-top .app-wrapper,
+.dock-left-bottom .app-wrapper {
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* SVG icon styling with shadow effect */
+.app-icon {
+    width: 26px;  /* Increased from 24px */
+    height: 26px;  /* Increased from 24px */
+    fill: var(--text-primary);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* App label typography and styling */
+.app-name {
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 10px;  /* Increased from 9px */
+    font-weight: 500;
+    opacity: 0.8;
+    letter-spacing: 0.3px;
+}
+
+/* Adjust text alignment for top docks */
+.dock-top-left .app-name,
+.dock-top-right .app-name {
+    font-size: 12px;  /* Slightly larger text */
+    margin-top: 0;
+}
+
+/* Hover animation effects */
+.app-link:hover {
+    transform: scale(1.12);
+}
+
+.app-link:hover .app-name {
+    opacity: 1;
+}
+
+/* Central widget container positioning */
+#widget-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Widget styling */
+.widget {
+    position: absolute;
+    pointer-events: auto;
+    background: var(--bg-primary);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    min-width: 240px;  /* Reverted from 400px */
+    min-height: 160px; /* Reverted from 120px */
+    display: flex;
+    flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    resize: both;
+    overflow: hidden;
+    max-width: 800px;
+    max-height: 600px;
+}
+
+/* Simplified resize handle */
+.widget::after {
+    content: '';
+    position: absolute;
+    right: 6px;      /* Increased from 4px */
+    bottom: 6px;     /* Increased from 4px */
+    width: 10px;
+    height: 10px;
+    cursor: se-resize;
+    border-right: 2px solid rgba(255, 255, 255, 0.9);   /* Changed to match font color */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.9);  /* Changed to match font color */
+    pointer-events: none;
+    transition: all 0.2s ease;
+    border-bottom-right-radius: 4px;  /* Added rounded corner */
+}
+
+.widget:hover::after {
+    border-color: rgba(255, 255, 255, 1);  /* Brighter on hover */
+}
+
+.widget-header {
+    display: flex;
+    align-items: center;
+    padding: 2px 6px; /* Reduced from 4px 8px */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: move;
+    height: 14px; /* Reduced from 16px */
+    user-select: none;
+}
+
+.widget-title {
+    display: none; /* Hide the title */
+}
+
+.widget-close {
+    width: 14px; /* Reduced from 16px */
+    height: 14px;
+    padding: 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    fill: rgba(255, 255, 255, 0.9);  /* Match resize handle opacity */
+    stroke: rgba(255, 255, 255, 0.9); /* Added for consistent weight */
+    stroke-width: 2px; /* Match resize handle weight */
+}
+
+.widget-close:hover {
+    background-color: transparent; /* Removed background effect */
+    fill: rgba(255, 255, 255, 1); /* Match resize handle hover */
+    stroke: rgba(255, 255, 255, 1);
+}
+
+.widget-content {
+    flex: 1;
+    padding: 12px; /* Reduced from 20px */
+    color: var(--text-primary);
+    font-size: 14px;
+    line-height: 1.5;
+    overflow: auto;
+    resize: none;
+    min-height: 100px;
+}
+
+/* Floating buttons container */
+.float-buttons {
+    position: fixed;
+    bottom: 10px; /* Changed from 20px */
+    right: 10px;  /* Changed from 20px */
+    z-index: 1000;
+    display: flex;
+    gap: 12px;
+}
+
+.float-button {
+    position: static;  /* Override previous fixed positioning */
+}
+
+.float-button .app-wrapper {
+    gap: 0;  /* Changed from 6px since we removed the text */
+}
+
+.float-button .app-icon {
+    width: 32px;  /* Slightly larger than dock icons */
+    height: 32px;
+}
+
+/* Remove the unused text style */
+/* .float-button .app-name {
+    font-size: 11px;
+} */
+
+/* Menu Container Styling */
+.menu-container {
+    position: fixed;
+    top: 74px; /* Positioned below the top dock */
+    left: 20px;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
+    transform: translateY(-20px);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1100;
+}
+
+.menu-container.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+.menu-wrapper {
+    background: var(--bg-primary);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    overflow: hidden;
+}
+
+.menu-header {
+    color: var(--text-secondary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 12px;
+    padding: 8px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu-content {
+    padding: 8px 0;
+}
+
+.menu-item {
+    display: block;
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 14px;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Theme toggle button styling */
+.theme-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.theme-button {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 4px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.theme-button:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+}
+
+/* Settings menu specific positioning */
+.settings-menu {
+    right: 20px;
+    left: auto;
+}
+
+/* Apps Widget Styles */
+.widget .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(54px, 1fr)); /* Match dock width */
+    gap: 12px; /* Match dock gap */
+    padding: 6px;
+}
+
+.widget .apps-grid .app-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px; /* Match dock icon-text gap */
+    padding: 6px; /* Match dock padding */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.widget .apps-grid .app-icon {
+    width: 26px; /* Match dock icon size */
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.widget .apps-grid .app-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--text-primary);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* Match dock icon shadow */
+}
+
+.widget .apps-grid .app-name {
+    font-size: 10px; /* Match dock font size */
+    text-align: center;
+    color: var(--text-primary);
+    opacity: 0.8;
+    letter-spacing: 0.3px;
+    font-weight: 500;
+}
+
+.widget .apps-grid .app-item:hover {
+    transform: scale(1.12); /* Match dock hover effect */
+}
+
+.widget .apps-grid .app-item:hover .app-name {
+    opacity: 1;
+}
+
+/* Adjust apps widget default size */
+.widget[data-widget-id="apps"] {
+    width: 320px; /* Adjust to fit grid nicely */
+    height: auto;
+    min-height: 240px;
+}
+
+/* Pomodoro Timer Styles */
+.pomodoro-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;    /* Reduced from 20px */
+    padding: 12px; /* Reduced from 20px */
+}
+
+.pomodoro-display {
+    text-align: center;
+}
+
+.pomodoro-display .time {
+    font-size: 64px;
+    font-weight: 300;
+    font-family: monospace;
+}
+
+.pomodoro-controls {
+    display: flex;
+    gap: 12px;
+}
+
+.pomodoro-button {
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pomodoro-button:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+}
+
+.pomodoro-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--text-secondary);
+}
+
+.pomodoro-settings input {
+    width: 50px;
+    padding: 4px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 4px;
+    margin: 0 8px;
+}
+
+/* Sound Player Styles */
+.sound-player {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;    /* Reduced from 20px */
+    padding: 12px; /* Reduced from 20px */
+}
+
+.sound-slider {
+    display: flex;
+    flex-direction: column;
+    gap: 6px; /* Reduced from 8px */
+}
+
+.sound-slider label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.sound-icon {
+    width: 18px;
+    height: 18px;
+    fill: var(--text-primary);
+}
+
+.volume-slider {
+    width: 100%;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--border-color);
+    border-radius: 2px;
+    outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--text-primary);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* Sound Player YouTube Container */
+.youtube-container {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    height: 0;
+}
+
+/* Background Switcher Styles */
+.background-switcher {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Smaller thumbnails */
+    gap: 8px;
+    padding: 8px;
+    height: auto; /* Remove fixed height */
+    overflow: hidden; /* Remove scrollbars */
+}
+
+.bg-option {
+    flex: 0 0 80px; /* Smaller thumbnails */
+    height: 80px; /* Smaller thumbnails */
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.bg-option:hover {
+    transform: translateY(-2px);
+}
+
+.bg-option.active {
+    border-color: var(--text-primary);
+}
+
+.bg-thumbnail {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Adjust widget size for background switcher */
+.widget[data-widget-id="screen"] {
+    width: 480px; /* Increased width */
+    height: auto;
+    resize: none;
+}
+
+/* Remove dock-menu-toggle and dock-menu styles */
+
+/* Add new menu section styles */
+.menu-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 8px 0;
+}
+
+.menu-section {
+    padding: 8px 16px;
+}
+
+.menu-section-header {
+    color: var(--text-secondary);
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.menu-section .app-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.menu-section input {
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.menu-section .add-app-button {
+    padding: 8px;
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.menu-section .add-app-button:hover {
+    opacity: 0.9;
+}
+
+.app-hover-menu,
+.open-as-widget {
+    display: none;
+}
+
+/* Notes App Styles */
+.notes-app {
+    display: flex;
+    height: 100%;
+    gap: 12px;
+}
+
+.notes-list {
+    width: 200px;
+    border-right: 1px solid var(--border-color);
+    overflow-y: auto;
+    padding-right: 12px;
+}
+
+.note-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 4px;
+    background: var(--bg-secondary);
+}
+
+.note-item.active {
+    background: var(--text-primary);
+    color: var (--bg-primary);
+}
+
+.note-preview {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.note-delete {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 0 4px;
+    opacity: 0.7;
+}
+
+.note-delete:hover {
+    opacity: 1;
+}
+
+.notes-editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.new-note-btn {
+    padding: 8px;
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.note-content {
+    flex: 1;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px;
+    color: var(--text-primary);
+    resize: none;
+}
+
+/* Todo App Styles */
+.todo-app {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 100%;
+}
+
+.todo-input-wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.todo-input {
+    flex: 1;
+    padding: 8px 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+}
+
+.todo-add-btn {
+    padding: 8px 16px;
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.todo-list {
+    flex: 1;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: var (--bg-secondary);
+    border-radius: 6px;
+    margin-bottom: 4px;
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.todo-text {
+    flex: 1;
+    font-size: 14px;
+}
+
+.todo-delete {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 0 4px;
+    opacity: 0.7;
+}
+
+.todo-delete:hover {
+    opacity: 1;
+}
+
+/* Terminal Styles */
+.terminal-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: rgba(0, 0, 0, 0.95);
+    border-radius: 8px;
+    display: none;
+    flex-direction: column;
+    z-index: 10000;
+    font-family: 'Courier New', monospace;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.terminal-container.show {
+    display: flex;
+}
+
+.terminal-header {
+    padding: 8px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    align-items: center;
+    background: #333;
+    border-radius: 8px 8px 0 0;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 8px;
+    padding-left: 8px;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+}
+
+.terminal-button:hover::before {
+    opacity: 1;
+}
+
+.terminal-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.terminal-close {
+    background: #ff5f57;
+    border: 1px solid #e0443e;
+}
+
+.terminal-close::before {
+    content: '×';
+    color: #4c0002;
+    font-size: 14px;
+}
+
+.terminal-minimize {
+    background: #ffbd4c;
+    border: 1px solid #dea123;
+}
+
+.terminal-minimize::before {
+    content: '−';
+    color: #5c4011;
+    font-size: 14px;
+}
+
+.terminal-maximize {
+    background: #28c940;
+    border: 1px solid #17ab2e;
+}
+
+.terminal-maximize::before {
+    content: '□';
+    color: #0b4817;
+    font-size: 12px;
+}
+
+.terminal-content {
+    flex: 1;
+    padding: 20px;
+    color: #00ff00;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-y: auto;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.terminal-prompt {
+    color: #00ff00;
+    margin-right: 8px;
+}
+
+.terminal-input {
+    background: none;
+    border: none;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    flex: 1;
+    outline: none;
+}
+
+.terminal-line {
+    color: #00ff00;
+    margin-bottom: 8px;
+    white-space: pre-wrap;
+}
+
+.terminal-output {
+    color: #00ff00;
+    opacity: 0.8;
+    margin-bottom: 16px;
+    white-space: pre-wrap;
+}
+
+/* Nano Editor Styles */
+.nano-editor {
+    width: 100%;
+    height: calc(100% - 24px);  /* Leave space for header */
+    background: transparent;     /* Use terminal background */
+}
+
+.nano-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 8px;
+    border-bottom: 1px solid #00ff00;
+    font-size: 14px;
+    color: #00ff00;
+    margin-bottom: 8px;
+}
+
+.nano-controls {
+    display: flex;
+    gap: 16px;
+    opacity: 0.7;
+}
+
+.nano-content {
+    width: 100%;
+    height: calc(100% - 32px);  /* Account for header */
+    background: transparent;
+    border: none;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 0;
+    resize: none;
+    outline: none;
+}
+
+/* Apps Grid Container and Sections */
+.apps-grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 12px;
+}
+
+.apps-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.apps-section-title {
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 500;
+    padding-left: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.apps-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 4px 0;
+}
+
+/* Notes Widget Styles */
+.widget[data-widget-id="notes"] {
+    width: 400px;
+    height: 600px;
+    background: var(--bg-primary);
+    backdrop-filter: blur(10px);
+}
+
+.widget[data-widget-id="notes"] .widget-content {
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    background: transparent;
+    height: calc(100% - 15px); /* Adjust for header height */
+}
+
+.widget[data-widget-id="notes"] iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: auto;
+    background: transparent !important;
+    border: none;
+    margin: 0;
+    padding: 0;
+    mix-blend-mode: difference; /* Use blend mode instead of filters */
+    filter: invert(1) contrast(1.1) brightness(1.2); /* Added contrast and brightness to make text sharper */
+}
+
+.widget[data-widget-id="notes"]::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+    height: 20px;
+    z-index: 3; /* Increased z-index to be above iframe */
+    cursor: se-resize;
+    background: var(--bg-primary);
+}
+
+.widget[data-widget-id="notes"]::after {
+    z-index: 3; /* Increased z-index to be above iframe */
+    pointer-events: auto; /* Add this to ensure resize handle is clickable */
+}
+
+.widget[data-widget-id="notes"] .widget-content {
+    padding: 0;
+    overflow: hidden;
+}
